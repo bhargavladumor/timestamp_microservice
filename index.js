@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+app.get("/api/", (req, res) => {
+    var resDate = new Date();
+    res.json({ unix: resDate.valueOf(), utc: resDate.toUTCString() });
+  });
+
 app.get("/api/:date_string", (req, res) => {
     let dateString = req.params.date_string;
   
